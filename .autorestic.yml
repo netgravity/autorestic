@@ -1,0 +1,26 @@
+version: 2
+global:
+  forget:
+    keep-daily: 4
+    keep-hourly: 3
+    keep-last: 5
+    keep-monthly: 12
+    keep-weekly: 1
+    keep-yearly: 7
+locations:
+  home:
+    from:
+      - /home/sunny/Projects
+      - /srv/docker
+    to:
+      - remote
+    cron: 0 11 * * * # every day at 11
+    options:
+      backup:
+        exclude:
+          - minio
+        exclude-file: .excludedfiles.txt
+backends:
+  remote:
+    type: s3
+    path: http://192.168.1.98:9000/restic

@@ -1,0 +1,2 @@
+/srv/**/.minio.sys
+/srv/**/minio/*
